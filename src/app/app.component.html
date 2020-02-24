@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <ul class="navbar-nav">
+      <h5>{{title}}</h5>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/coursesList']" 
+        routerLinkActive="router-link-active"
+        style="margin-left: 50px">View Courses</a>
+      </li>
+    </ul>
+  </nav>
+  <br>
+  <br>
+  <router-outlet></router-outlet>
+</div>
