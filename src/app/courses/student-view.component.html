@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<h4> 
+			<strong>Course: {{course.name}}</strong>
+		</h4>
+	</div>
+</div>
+<br>
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Nr.</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Phone Number</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of studentsReceived; let i=index">
+			<td>{{i+1}}</td>
+			<td>{{item?.firstName}}</td>
+			<td>{{item?.lastName}}</td>
+			<td>{{item?.email}}</td>
+			<td>{{item?.phoneNumber}}</td>
+			<td>
+				<div class="row">
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+						<button type="button" class="btn btn-danger" 
+						(click)="removeStudent(item)">Delete</button>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<div class="row">
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<button type="button" class="btn btn-outline-secondary btn-sm" (click)="close()">Close</button>
+	</div>
+</div>

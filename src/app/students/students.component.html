@@ -1,0 +1,71 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit(studentForm.value)">
+	<h5>Add Student To Course: 
+		<strong>{{courseRetrieved?.name}}</strong>
+	</h5>
+	<br>
+	<div class="form-group">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<label for="firstName">
+				First Name
+			</label>
+			<input id="firstName" class="form-control" 
+			placeholder="Enter First Name" type="text" 
+			formControlName="firstName" #firstName
+			[ngStyle]="{'border-color': firstName.value === '' && studentForm.controls.firstName.touched? 'red': ''}">
+			<small *ngIf="firstName.value === '' && studentForm.controls.firstName.touched" 
+			class="text-danger">
+					First Name is required.
+			</small>
+		</div><br>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<label for="lastName">
+				Last Name
+			</label>
+			<input id="lastName" class="form-control" 
+			placeholder="Enter Last Name" type="text" 
+			formControlName="lastName" #lastName
+			[ngStyle]="{'border-color': lastName.value === '' && studentForm.controls.lastName.touched? 'red': ''}">
+			<small *ngIf="lastName.value === '' && studentForm.controls.lastName.touched" 
+			class="text-danger">
+				Last Name is required.
+			</small>
+		</div><br>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<label for="email">
+				Email
+			</label>
+			<input id="email" class="form-control" 
+			placeholder="Enter Email" type="email" 
+			formControlName="email" #email
+			[ngStyle]="{'border-color': email.value === '' && studentForm.controls.email.touched? 'red': ''}">
+			<small *ngIf="email.value === '' && studentForm.controls.email.touched" 
+			class="text-danger">
+				Email is required.
+			</small>
+		</div><br>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<label for="phoneNumber">
+				Phone Number
+			</label>
+			<input id="phoneNumber" class="form-control" 
+			placeholder="Enter Phone Number" type="text" 
+			formControlName="phoneNumber" #phoneNumber>
+		</div><br>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<button class="button" type="submit" class="btn btn-outline-success" 
+			[disabled]="!studentForm.valid">
+				Save Student
+			</button>
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<button class="button" 
+			type="button" class="btn btn-outline-info"
+			[routerLink]="['../../../coursesList']">
+				Go Back
+			</button>
+		</div>
+	</div>
+</form>

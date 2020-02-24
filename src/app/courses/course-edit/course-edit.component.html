@@ -1,0 +1,51 @@
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit(courseForm.value)">
+	<h5>Course Form</h5>
+	<br>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<label for="name">
+					Name
+				</label>
+				<input id="name" class="form-control" 
+				placeholder="Enter Name" type="text" 
+				formControlName="name" #name
+				[ngStyle]="{'border-color': name.value === '' && courseForm.controls.name.touched? 'red': ''}">
+				<small *ngIf="name.value === '' && courseForm.controls.name.touched" class="text-danger">
+					Name is required.
+				</small>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<mat-form-field>
+					<input matInput [matDatepicker]="picker" style="border: 0px;"
+					formControlName="date" #date placeholder="Enter Date">
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+				<small *ngIf="date.value === '' && courseForm.controls.date.touched" class="text-danger">
+					Date is required.
+				</small>
+			</div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<button class="button" 
+				type="submit" class="btn btn-outline-success" 
+				[disabled]="!courseForm.valid">
+					{{editMode ? 'Update Courses': 'Save Courses'}}
+				</button>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<button class="button" 
+				type="button" class="btn btn-outline-info"
+				[routerLink]="['../../coursesList']">
+					Go Back
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

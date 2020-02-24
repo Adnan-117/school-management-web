@@ -1,0 +1,46 @@
+<form [formGroup]="studentEditForm" (ngSubmit)="onSubmit()">
+	<h5>Update Students For Course: {{courseRetrieved?.name}}</h5>
+	<br>
+	<button type="button" style="
+	margin-bottom: 20px;" class="btn btn-outline-info"
+	(click)="addStudents()"> Add More Students</button>
+	<br>
+	<div formArrayName="students" *ngFor="let student of studentsControl(); let i = index;">
+		<div [formGroupName]="i">
+			<div class="form-inline">
+				<input formControlName="firstName" type="text" 
+				class="form-control" placeholder="First Name">
+				<input formControlName="lastName" type="text" 
+				class="form-control" placeholder="Last Name" 
+				style="margin-left: 10px;">
+				<input formControlName="email" type="email" 
+				class="form-control" placeholder="Email" 
+				style="margin-left: 10px;">
+				<input formControlName="phoneNumber" type="text" 
+				class="form-control" placeholder="Phone Number"
+				style="margin-left: 10px;">
+				<button type="button" class="btn btn-outline-danger btn-sm"
+				style="margin-left: 10px;"
+				(click)="removeStudent(i)"> Delete</button>
+			</div>
+		</div>
+		<br>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<button class="button" 
+			type="submit" class="btn btn-outline-success" 
+			[disabled]="!studentEditForm.valid">
+				Update
+			</button>
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<button class="button" 
+			type="button" class="btn btn-outline-info"
+			[routerLink]="['../../../coursesList']">
+				Go Back
+			</button>
+		</div>
+	</div>
+</form>
